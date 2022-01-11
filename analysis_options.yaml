@@ -1,0 +1,7 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+
+  rules:
+    lines_longer_than_80_chars: false
+    public_member_api_docs: false

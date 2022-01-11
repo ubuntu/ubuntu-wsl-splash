@@ -1,0 +1,51 @@
+#
+# Copyright (C) 2022 Canonical Ltd
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 3 as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Shamelessly copied from github.com/jpnurmi/ubuntu-desktop-installer.git
+#
+
+name: ubuntu_wsl_splash
+description: A graphical application to enhance user experience with Ubuntu on WSL during the distro installation process.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+  yaru: ^0.2.0
+  yaru_icons: ^0.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+  generate: true
+
+  uses-material-design: true
+
+  # TODO: Declare assets here once we get them.
+  # assets:
+  #   - assets/

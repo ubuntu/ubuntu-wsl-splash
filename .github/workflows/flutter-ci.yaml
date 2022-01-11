@@ -1,0 +1,38 @@
+name: Flutter CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+ build:
+   runs-on: windows-latest
+   name: Flutter CI
+   steps:
+     - uses: actions/checkout@v2
+     - uses: subosito/flutter-action@v2
+       with:
+         channel: stable
+     - run: flutter config --enable-windows-desktop
+     - name: Format sources
+       shell: bash
+       run: |
+          find . -name '*.dart' \
+          ! -name '*.g.dart' \
+          ! -name '*.freezed.dart' \
+          ! -path '*/l10n/*' \
+          ! -path "*/.*/*" \
+          | xargs flutter format --set-exit-if-changed
+     - name: Analyze sources
+       run: flutter analyze .
+     - name: Generate localization data
+       run: flutter gen-l10n
+     - name: Run tests
+       run: flutter test 
+     - name: Build in release mode
+       run: flutter build windows --release

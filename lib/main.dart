@@ -16,6 +16,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:ubuntu_wsl_splash/utils/win32utils.dart';
 import 'package:yaru/yaru.dart';
 import 'package:ubuntu_wsl_splash/l10n/app_localizations.dart';
 
@@ -31,6 +32,7 @@ class UbuntuWslSplash extends StatelessWidget {
     return MaterialApp(
       onGenerateTitle: (context) {
         final lang = AppLocalizations.of(context);
+        setWindowTitle(lang.windowTitle);
         return lang.appTitle;
       },
       localizationsDelegates: AppLocalizations.localizationsDelegates,

@@ -15,14 +15,16 @@
  *
  */
 
-import 'dart:ffi';
-
 import 'package:ffi/ffi.dart';
 import 'package:win32/win32.dart';
 
 void setWindowTitle(String title) {
-  final hWnd =
-      FindWindow('FLUTTER_RUNNER_WIN32_WINDOW'.toNativeUtf16(), nullptr);
+  final windowClass = 'FLUTTER_RUNNER_WIN32_WINDOW'.toNativeUtf16();
+  final windowName = 'ubuntu_wsl_splash'.toNativeUtf16();
+  final hWnd = FindWindow(windowClass, windowName);
   final titleNative = title.toNativeUtf16();
   SetWindowText(hWnd, titleNative);
+  malloc.free(windowClass);
+  malloc.free(windowName);
+  malloc.free(titleNative);
 }

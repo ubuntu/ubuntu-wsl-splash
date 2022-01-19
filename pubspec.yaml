@@ -48,5 +48,5 @@ flutter:
   uses-material-design: true
 
   # TODO: Declare assets here once we get them.
-  # assets:
-  #   - assets/
+  assets:
+    - assets/

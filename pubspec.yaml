@@ -37,15 +37,14 @@ dependencies:
       url: https://github.com/canonical/ubuntu-flutter-plugins.git
       path: packages/ubuntu_widgets
 
+  win32: ^2.3.0
   yaru: ^0.2.0
   yaru_icons: ^0.0.8
-  win32: ^2.3.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
   flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter  
 
 flutter:
   generate: true

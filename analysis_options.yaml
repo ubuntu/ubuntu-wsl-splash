@@ -6,3 +6,6 @@ linter:
     lines_longer_than_80_chars: false
     public_member_api_docs: false
     directives_ordering: true
+    sort_pub_dependencies: true
+    avoid_relative_lib_imports: true
+    prefer_relative_imports: true

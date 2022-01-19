@@ -38,7 +38,6 @@ class UbuntuWslSplash extends StatelessWidget {
         setWindowTitle(lang.windowTitle);
         return lang.appTitle;
       },
-      debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: yaruLight,

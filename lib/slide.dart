@@ -43,8 +43,8 @@ class Slide extends StatelessWidget {
           title: Text(title),
           automaticallyImplyLeading: false,
         ),
-        Container(
-          margin: const EdgeInsets.all(kInSlideSpacing),
+        Padding(
+          padding: const EdgeInsets.all(kInSlideSpacing),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

@@ -31,22 +31,20 @@ class SlidesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
-                const Image(
-                  image: AssetImage('assets/bg.jpg'),
-                  fit: BoxFit.scaleDown,
-                ),
-                SlideShow(
-                  slides: slides,
-                ),
-              ],
-            ),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
+              const Image(
+                image: AssetImage('assets/bg.jpg'),
+                fit: BoxFit.scaleDown,
+              ),
+              SlideShow(
+                slides: slides,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

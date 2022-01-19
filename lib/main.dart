@@ -16,9 +16,12 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:ubuntu_wsl_splash/l10n/app_localizations.dart';
-import 'package:ubuntu_wsl_splash/utils/win32utils.dart';
 import 'package:yaru/yaru.dart';
+
+import 'l10n/app_localizations.dart';
+import 'slide.dart';
+import 'slides_page.dart';
+import 'utils/win32utils.dart';
 
 void main() {
   runApp(const UbuntuWslSplash());
@@ -35,13 +38,15 @@ class UbuntuWslSplash extends StatelessWidget {
         setWindowTitle(lang.windowTitle);
         return lang.appTitle;
       },
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: yaruLight,
       darkTheme: yaruDark,
-      home: const Center(
-        child: Text("Hello, World!"),
-      ),
+      home: Builder(builder: (context) {
+        final slides = theSlides(context);
+        return SlidesPage(slides);
+      }),
     );
   }
 }

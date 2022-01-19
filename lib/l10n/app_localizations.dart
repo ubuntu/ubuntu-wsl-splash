@@ -103,6 +103,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Installing Ubuntu on WSL'**
   String get windowTitle;
+
+  /// No description provided for @welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Ubuntu'**
+  String get welcome;
+
+  /// No description provided for @ubuntuOnWsl.
+  ///
+  /// In en, this message translates to:
+  /// **'Install a complete Ubuntu terminal environment in minutes on Windows with Windows Subsystem for Linux (WSL).\n\nAccess the Linux terminal on Windows, develop cross-platform applications, and manage IT infrastructure without leaving Windows.'**
+  String get ubuntuOnWsl;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

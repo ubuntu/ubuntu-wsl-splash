@@ -168,6 +168,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
+  ubuntu_widgets:
+    dependency: "direct main"
+    description:
+      path: "packages/ubuntu_widgets"
+      ref: HEAD
+      resolved-ref: "71624cf398129d66d3a2b9067caab0e3d8978565"
+      url: "https://github.com/canonical/ubuntu-flutter-plugins.git"
+    source: git
+    version: "0.0.0"
   vector_math:
     dependency: transitive
     description:

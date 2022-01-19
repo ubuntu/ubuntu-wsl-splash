@@ -32,6 +32,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
+  ubuntu_widgets:
+    git:
+      url: https://github.com/canonical/ubuntu-flutter-plugins.git
+      path: packages/ubuntu_widgets
+
   yaru: ^0.2.0
   yaru_icons: ^0.0.8
   win32: ^2.3.0
@@ -48,5 +53,5 @@ flutter:
   uses-material-design: true
 
   # TODO: Declare assets here once we get them.
-  # assets:
-  #   - assets/
+  assets:
+    - assets/

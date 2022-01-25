@@ -34,17 +34,21 @@ class SlidesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Stack(
-            children: <Widget>[
-              const Image(
-                image: AssetImage('assets/bg.jpg'),
-                fit: BoxFit.scaleDown,
-              ),
-              SlideShow(
-                slides: slides,
-              ),
-            ],
+          SizedBox(
+            height: 460,
+            child: Stack(
+              children: <Widget>[
+                const Image(
+                  image: AssetImage('assets/bg.jpg'),
+                  fit: BoxFit.cover,
+                ),
+                SlideShow(
+                  slides: slides,
+                ),
+              ],
+            ),
           ),
           bottom,
         ],

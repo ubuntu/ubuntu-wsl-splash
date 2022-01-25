@@ -37,3 +37,6 @@ const kContentWidthFraction = 0.7;
 
 /// The size of a radio indicator.
 const kRadioSize = Size.square(kMinInteractiveDimension - 8);
+
+/// Size of common elements size inside a Span.
+const kSpanElementSize = 16.0;

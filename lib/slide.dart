@@ -43,27 +43,29 @@ class Slide extends StatelessWidget {
           title: Text(title),
           automaticallyImplyLeading: false,
         ),
-        Padding(
-          padding: const EdgeInsets.all(kInSlideSpacing),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image(
-                image: image,
-                fit: BoxFit.cover,
-              ),
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.all(kInSlideSpacing),
-                  child: Text(
-                    text,
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
-                        color: Colors.white70, fontWeight: FontWeight.normal),
+        SizedBox(
+          height: 400,
+          child: Padding(
+            padding: const EdgeInsets.all(kInSlideSpacing),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image(
+                  image: image,
+                  fit: BoxFit.fitHeight,
+                ),
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: kInSlideSpacing),
+                    child: Text(
+                      text,
+                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                          color: Colors.white70, fontWeight: FontWeight.normal),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

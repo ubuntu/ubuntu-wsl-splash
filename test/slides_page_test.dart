@@ -13,11 +13,14 @@ void main() {
     const asset = AssetImage("assets/ubuntu-on-wsl.png");
 
     const app = MaterialApp(
-      home: SlidesPage([
-        Slide(image: asset, title: title, text: "1"),
-        Slide(image: asset, title: title, text: "2"),
-        Slide(image: asset, title: title, text: "3"),
-      ]),
+      home: SlidesPage(
+        [
+          Slide(image: asset, title: title, text: "1"),
+          Slide(image: asset, title: title, text: "2"),
+          Slide(image: asset, title: title, text: "3"),
+        ],
+        bottom: Text("This is a test"),
+      ),
     );
 
     await tester.pumpWidget(app);

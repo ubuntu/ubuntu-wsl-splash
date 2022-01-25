@@ -25,8 +25,10 @@ import 'slide.dart';
 /// An 'installation status' is (planned to be) shown at the bottom of the page.
 class SlidesPage extends StatelessWidget {
   final List<Slide> slides;
+  final Widget bottom;
 
-  const SlidesPage(this.slides, {Key? key}) : super(key: key);
+  const SlidesPage(this.slides, {required this.bottom, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class SlidesPage extends StatelessWidget {
               ),
             ],
           ),
+          bottom,
         ],
       ),
     );

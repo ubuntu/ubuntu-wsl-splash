@@ -21,11 +21,11 @@ import 'package:test/test.dart';
 import 'package:ubuntu_wsl_splash/installer_state_controller.dart';
 
 void main() {
-  group('Intallation status controller tests', () {
+  group('Installation status controller tests', () {
     test("Should emit only states upon reacting to the input stream", () {
       InstallerStateController controller = InstallerStateController(
         const Stream.empty(),
-        InstallerState.kInitializing,
+        InstallerState.initializing,
       );
 
       expect(controller.states, neverEmits(isA<InstallerState>()));
@@ -40,12 +40,12 @@ void main() {
 
       InstallerStateController controller = InstallerStateController(
         Stream.fromIterable(stdoutMessages),
-        InstallerState.kInitializing,
+        InstallerState.initializing,
       );
 
       // When:
       // empty because this controller is meant to react upon the stream of
-      // inputs, istead of acting in a controlled call fashion.
+      // inputs, instead of acting in a controlled call fashion.
 
       // Then:
       expect(controller.states, neverEmits(isA<InstallerState>()));
@@ -63,7 +63,7 @@ void main() {
 
       InstallerStateController controller = InstallerStateController(
         Stream.fromIterable(stdoutMessages),
-        InstallerState.kInitializing,
+        InstallerState.initializing,
       );
 
       // When:
@@ -73,10 +73,10 @@ void main() {
         controller.states,
         emitsInOrder(
           [
-            InstallerState.kUnpacking,
-            InstallerState.kSettingUp,
-            InstallerState.kRunning,
-            InstallerState.kError,
+            InstallerState.unpacking,
+            InstallerState.settingUp,
+            InstallerState.running,
+            InstallerState.error,
             emitsDone,
           ],
         ),

@@ -17,14 +17,7 @@
 
 import 'dart:async';
 
-enum InstallerState {
-  kInitializing,
-  kUnpacking,
-  kSettingUp,
-  kRunning,
-  kDone,
-  kError
-}
+enum InstallerState { initializing, unpacking, settingUp, running, done, error }
 
 /// Models the WSL launcher app state change as a function of the input String.
 /// This line is meant to come from a transformation of [stdin], thus instead
@@ -32,9 +25,9 @@ enum InstallerState {
 /// a [inputStream] in its constructor as a source of events and wraps it with
 /// an internal [StreamController].
 class InstallerStateController {
-  late StreamController<String> _eventsController;
-  late StreamController<InstallerState> _stateController;
-  late StreamSubscription<String> _eventSubs;
+  late final StreamController<String> _eventsController;
+  late final StreamController<InstallerState> _stateController;
+  late final StreamSubscription<String> _eventSubs;
   InstallerState _state;
   InstallerState get state => _state;
   Stream<InstallerState> get states => _stateController.stream;
@@ -56,10 +49,10 @@ class InstallerStateController {
   // launcher C++ application.
   final Map<RegExp, InstallerState> _patternsToStates = {
     RegExp("Installing, this may take a few minutes.*"):
-        InstallerState.kUnpacking,
-    RegExp(".*Error:.*"): InstallerState.kError,
-    RegExp("^Installation successful!\$"): InstallerState.kSettingUp,
-    RegExp("Launching .*"): InstallerState.kRunning,
+        InstallerState.unpacking,
+    RegExp(".*Error:.*"): InstallerState.error,
+    RegExp("^Installation successful!\$"): InstallerState.settingUp,
+    RegExp("Launching .*"): InstallerState.running,
   };
 
   void processJournalInput(String line) {

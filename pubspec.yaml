@@ -44,7 +44,8 @@ dependencies:
 dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_test:
-    sdk: flutter  
+    sdk: flutter
+  test: ^1.17.12
 
 flutter:
   generate: true

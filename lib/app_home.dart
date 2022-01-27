@@ -40,17 +40,9 @@ class AppHome extends StatefulWidget {
 }
 
 class _AppHomeState extends State<AppHome> {
-  late final InstallerStateController controller;
-
-  @override
-  void initState() {
-    controller = widget.controller;
-    super.initState();
-  }
-
   @override
   void dispose() {
-    controller.dispose();
+    widget.controller.dispose();
     super.dispose();
   }
 
@@ -59,12 +51,12 @@ class _AppHomeState extends State<AppHome> {
     return SlidesPage(
       widget.slides,
       bottom: StreamBuilder<InstallerState>(
-        stream: controller.states,
+        stream: widget.controller.states,
         builder: (context, snapshot) {
           return _buildStatusTile(
             context,
             snapshot.data,
-            controller.journal,
+            widget.controller.journal,
           );
         },
       ),

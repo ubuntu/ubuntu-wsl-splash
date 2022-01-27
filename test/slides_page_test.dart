@@ -11,6 +11,7 @@ void main() {
   testWidgets('Slides Page test widget', (WidgetTester tester) async {
     const title = "Ubuntu on WSL";
     const asset = AssetImage("assets/ubuntu-on-wsl.png");
+    const bottomText = "This is a test";
 
     const app = MaterialApp(
       home: SlidesPage(
@@ -19,11 +20,12 @@ void main() {
           Slide(image: asset, title: title, text: "2"),
           Slide(image: asset, title: title, text: "3"),
         ],
-        bottom: Text("This is a test"),
+        bottom: Text(bottomText),
       ),
     );
 
     await tester.pumpWidget(app);
+    expect(find.text(bottomText), findsOneWidget);
 
     final rightButton = find.byIcon(Icons.chevron_right);
     expect(rightButton, findsOneWidget);

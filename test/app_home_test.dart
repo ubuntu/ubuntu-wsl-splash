@@ -7,7 +7,7 @@ import 'package:ubuntu_wsl_splash/installer_state_controller.dart';
 import 'package:ubuntu_wsl_splash/l10n/app_localizations.dart';
 
 import 'package:ubuntu_wsl_splash/slide.dart';
-import 'package:yaru_icons/widgets/yaru_icons.dart';
+import 'package:yaru_icons/yaru_icons.dart';
 
 void main() {
   testWidgets('AppHome Installer Status integration',

@@ -16,7 +16,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:yaru_icons/widgets/yaru_icons.dart';
+import 'package:yaru_icons/yaru_icons.dart';
 
 import 'constants.dart';
 import 'installer_state_controller.dart';

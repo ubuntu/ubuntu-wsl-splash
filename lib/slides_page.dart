@@ -18,6 +18,7 @@
 import 'package:flutter/material.dart';
 import 'package:ubuntu_widgets/ubuntu_widgets.dart';
 
+import 'constants.dart';
 import 'slide.dart';
 
 /// Implements a slide show in which all slides have a common background image.
@@ -34,10 +35,9 @@ class SlidesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           SizedBox(
-            height: 460,
+            height: kSlidePageHeight,
             child: Stack(
               children: <Widget>[
                 const Image(

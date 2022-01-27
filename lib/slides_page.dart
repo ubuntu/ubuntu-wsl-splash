@@ -18,6 +18,7 @@
 import 'package:flutter/material.dart';
 import 'package:ubuntu_widgets/ubuntu_widgets.dart';
 
+import 'constants.dart';
 import 'slide.dart';
 
 /// Implements a slide show in which all slides have a common background image.
@@ -25,25 +26,31 @@ import 'slide.dart';
 /// An 'installation status' is (planned to be) shown at the bottom of the page.
 class SlidesPage extends StatelessWidget {
   final List<Slide> slides;
+  final Widget bottom;
 
-  const SlidesPage(this.slides, {Key? key}) : super(key: key);
+  const SlidesPage(this.slides, {required this.bottom, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Stack(
-            children: <Widget>[
-              const Image(
-                image: AssetImage('assets/bg.jpg'),
-                fit: BoxFit.scaleDown,
-              ),
-              SlideShow(
-                slides: slides,
-              ),
-            ],
+          SizedBox(
+            height: kSlidePageHeight,
+            child: Stack(
+              children: <Widget>[
+                const Image(
+                  image: AssetImage('assets/bg.jpg'),
+                  fit: BoxFit.cover,
+                ),
+                SlideShow(
+                  slides: slides,
+                ),
+              ],
+            ),
           ),
+          bottom,
         ],
       ),
     );

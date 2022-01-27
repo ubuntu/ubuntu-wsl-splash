@@ -18,9 +18,11 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart';
 
+import 'app_home.dart';
+import 'installer_state_controller.dart';
 import 'l10n/app_localizations.dart';
 import 'slide.dart';
-import 'slides_page.dart';
+import 'stdin_stream.dart';
 import 'utils/win32utils.dart';
 
 void main() {
@@ -43,8 +45,13 @@ class UbuntuWslSplash extends StatelessWidget {
       theme: yaruLight,
       darkTheme: yaruDark,
       home: Builder(builder: (context) {
-        final slides = theSlides(context);
-        return SlidesPage(slides);
+        return AppHome(
+          controller: InstallerStateController(
+            stdinStream(),
+            InstallerState.initializing,
+          ),
+          slides: theSlides(context),
+        );
       }),
     );
   }

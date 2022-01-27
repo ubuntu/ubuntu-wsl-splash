@@ -110,6 +110,42 @@ abstract class AppLocalizations {
   /// **'Welcome to Ubuntu'**
   String get welcome;
 
+  /// No description provided for @unpacking.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpacking the distro'**
+  String get unpacking;
+
+  /// No description provided for @installing.
+  ///
+  /// In en, this message translates to:
+  /// **'Almost done. The installer requires your attention.'**
+  String get installing;
+
+  /// No description provided for @launching.
+  ///
+  /// In en, this message translates to:
+  /// **'Launching distro...'**
+  String get launching;
+
+  /// No description provided for @errorMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong.'**
+  String get errorMsg;
+
+  /// No description provided for @errorSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Please restart WSL with the following command and try again:\n\twsl --shutdown\n\twsl --unregister DISTRO_NAME'**
+  String get errorSub;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'All set. Enjoy using Ubuntu on WSL'**
+  String get done;
+
   /// No description provided for @ubuntuOnWsl.
   ///
   /// In en, this message translates to:

@@ -3,5 +3,11 @@
     "appTitle": "What to expect from Ubuntu on WSL",
     "windowTitle": "Installing Ubuntu on WSL",
     "welcome": "Welcome to Ubuntu",
+    "unpacking": "Unpacking the distro",
+    "installing": "Almost done. The installer requires your attention.",
+    "launching": "Launching distro...",
+    "errorMsg": "Something went wrong.",
+    "errorSub": "Please restart WSL with the following command and try again:\n\twsl --shutdown\n\twsl --unregister DISTRO_NAME",
+    "done": "All set. Enjoy using Ubuntu on WSL",
     "ubuntuOnWsl": "Install a complete Ubuntu terminal environment in minutes on Windows with Windows Subsystem for Linux (WSL).\n\nAccess the Linux terminal on Windows, develop cross-platform applications, and manage IT infrastructure without leaving Windows."
 }

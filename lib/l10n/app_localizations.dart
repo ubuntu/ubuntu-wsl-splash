@@ -119,7 +119,7 @@ abstract class AppLocalizations {
   /// No description provided for @installing.
   ///
   /// In en, this message translates to:
-  /// **'Almost done. The installer requires your attention.'**
+  /// **'Almost done. The installer will require your attention soon.'**
   String get installing;
 
   /// No description provided for @launching.
@@ -145,6 +145,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All set. Enjoy using Ubuntu on WSL'**
   String get done;
+
+  /// No description provided for @exitTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to leave?'**
+  String get exitTitle;
+
+  /// No description provided for @exitContents.
+  ///
+  /// In en, this message translates to:
+  /// **'Closing this window will not prevent the installation from continuing in the background.\n\nBesides, you can continue exploring what you can do with Ubuntu on WSL.'**
+  String get exitContents;
+
+  /// No description provided for @customExitTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We are almost done'**
+  String get customExitTitle;
+
+  /// No description provided for @customExitContents.
+  ///
+  /// In en, this message translates to:
+  /// **'Just a few steps to be completed in the main installer window.\nCan we quit this one and go there?'**
+  String get customExitContents;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get ok;
 
   /// No description provided for @ubuntuOnWsl.
   ///

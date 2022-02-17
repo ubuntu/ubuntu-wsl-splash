@@ -2,6 +2,7 @@
 
 #include <optional>
 
+#include "flutter/standard_method_codec.h"
 #include "flutter/generated_plugin_registrant.h"
 
 FlutterWindow::FlutterWindow(const flutter::DartProject& project)
@@ -26,6 +27,47 @@ bool FlutterWindow::OnCreate() {
   }
   RegisterPlugins(flutter_controller_->engine());
   SetChildContent(flutter_controller_->view()->GetNativeWindow());
+
+  // this is for notifying the Dart code of a closing event.
+  notificationChannel = std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
+      flutter_controller_->engine()->messenger(),
+      "splash_window_close_notification",
+      &flutter::StandardMethodCodec::GetInstance());
+
+  // this is to react to the Dart code invocations.
+  auto methodChannel = std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
+      flutter_controller_->engine()->messenger(),
+      "splash_window_close",
+      &flutter::StandardMethodCodec::GetInstance());
+
+  // WIN32 default behavior is:
+  // case WM_CLOSE: DestroyWindow(hwnd); return 0; // pressed close? destroy window.
+  // case WM_DESTROY: PostQuitMessage(0); return 0; // destroyed window? quit message loop.
+  // WM_QUIT isn't associated with a window, so isn't sent to the window procedure
+  // So we hook into WM_CLOSE to let Flutter code react,
+  // Return from Flutter by default with WM_DESTROY (by caling DestroyWindow)
+  // And in the most dramatic case we post WM_QUIT.
+  methodChannel->SetMethodCallHandler(
+      [handle = GetHandle()](const flutter::MethodCall<flutter::EncodableValue> &call,
+                             std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result)
+      {
+        if (call.method_name().compare("closeWindow") == 0) {
+          PostMessage(handle, WM_CLOSE, 0, 0);
+          result->Success(flutter::EncodableValue(nullptr));
+        }
+        else if (call.method_name().compare("destroyWindow") == 0) {
+          DestroyWindow(handle);
+          result->Success(flutter::EncodableValue(nullptr));
+        }
+        else if (call.method_name().compare("quitWindow") == 0) {
+          PostMessage(handle, WM_QUIT, 0, 0);
+          result->Success(flutter::EncodableValue(nullptr));
+        }
+        else {
+          result->NotImplemented();
+        }
+      });
+
   return true;
 }
 
@@ -55,6 +97,14 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
     case WM_FONTCHANGE:
       flutter_controller_->engine()->ReloadSystemFonts();
       break;
+
+    case WM_CLOSE:
+        notificationChannel->InvokeMethod("onWindowClose", nullptr);
+        return 0;
+    
+    case WM_USER+7:
+        notificationChannel->InvokeMethod("onCustomCloseEvent", nullptr);
+        return 0;
   }
 
   return Win32Window::MessageHandler(hwnd, message, wparam, lparam);

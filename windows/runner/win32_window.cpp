@@ -35,6 +35,8 @@ void EnableFullDpiSupportIfAvailable(HWND hwnd) {
   }
 }
 
+bool PostWindowHandle(HWND handle);
+
 }  // namespace
 
 // Manages the Win32Window's window class registration.
@@ -241,10 +243,39 @@ void Win32Window::SetQuitOnClose(bool quit_on_close) {
 }
 
 bool Win32Window::OnCreate() {
-  // No-op; provided for subclasses.
-  return true;
+  return PostWindowHandle(window_handle_);
 }
 
 void Win32Window::OnDestroy() {
   // No-op; provided for subclasses.
+}
+
+namespace {
+  // Posts the window [handle] through a named pipe created by the WSL Launcher.
+  // Returns true even in failure cases to not prevent the splash from running.
+  // The launcher must have a fallback detection method in case this fails.
+  bool PostWindowHandle(HWND handle) {
+    constexpr wchar_t *pipe{L"\\\\.\\pipe\\Flutter_HWND_Pipe"};
+    constexpr DWORD size = sizeof(handle);
+    // The launcher must create the pipe before invoking this app, so this timeout acts as an insurance condition.
+    constexpr DWORD connectionTimeout = 3000; // ms.
+
+    LPCVOID buffer = static_cast<const void *>(&handle);
+    DWORD bytesWritten = 0;
+    // If an instance of the pipe is not available before the time-out interval elapses, the return value is zero.
+    if (WaitNamedPipe(pipe, connectionTimeout) == WAIT_OBJECT_0) {
+      // There is no much sense in logging those errors because they will not be seen.
+      return true;
+    }
+    HANDLE hPipe = CreateFile(pipe, GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
+    if (hPipe == INVALID_HANDLE_VALUE) {
+      return true;
+    }
+    using defer = std::unique_ptr<std::remove_pointer_t<HANDLE>, decltype(&::CloseHandle)>;
+    defer fileCloser{hPipe, &::CloseHandle};
+    if (!::WriteFile(hPipe, buffer, size, &bytesWritten, NULL) || bytesWritten != size) {
+      return true;
+    }
+    return true;
+  }
 }

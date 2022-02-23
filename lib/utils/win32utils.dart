@@ -41,7 +41,6 @@ class SplashWindowCloseNotifier {
 
   static Future<bool?> Function()? _onCloseEventHandler;
   static Future<bool?> Function()? _onCustomCloseEventHandler;
-  static MethodChannel? _notificationChannel;
   static const MethodChannel _channel = MethodChannel('splash_window_close');
 
   /// Sets a function to handle window close events.
@@ -87,30 +86,27 @@ class SplashWindowCloseNotifier {
       Future<bool?> Function()? onCustomClose}) {
     _onCloseEventHandler = onClose;
     _onCustomCloseEventHandler = onCustomClose;
-    if (_notificationChannel == null) {
-      var channel = const MethodChannel('splash_window_close_notification');
-      channel.setMethodCallHandler((call) async {
-        if (call.method == 'onCustomCloseEvent') {
-          final handler = SplashWindowCloseNotifier._onCustomCloseEventHandler;
-          if (handler != null) {
-            final result = await handler() ?? false;
-            if (result) SplashWindowCloseNotifier.terminateWindow();
-          }
-        }
 
-        if (call.method == 'onWindowClose') {
-          final handler = SplashWindowCloseNotifier._onCloseEventHandler;
-          if (handler != null) {
-            final result = await handler() ?? false;
-            if (result) SplashWindowCloseNotifier.terminateWindow();
-          } else {
-            _channel.invokeMethod('quitWindow');
-          }
+    _channel.setMethodCallHandler((call) async {
+      if (call.method == 'onCustomCloseEvent') {
+        final handler = SplashWindowCloseNotifier._onCustomCloseEventHandler;
+        if (handler != null) {
+          final result = await handler() ?? false;
+          if (result) SplashWindowCloseNotifier.terminateWindow();
         }
-        return null;
-      });
-      _notificationChannel = channel;
-    }
+      }
+
+      if (call.method == 'onWindowClose') {
+        final handler = SplashWindowCloseNotifier._onCloseEventHandler;
+        if (handler != null) {
+          final result = await handler() ?? false;
+          if (result) SplashWindowCloseNotifier.terminateWindow();
+        } else {
+          _channel.invokeMethod('quitWindow');
+        }
+      }
+      return null;
+    });
   }
 
   static void closeWindow() {

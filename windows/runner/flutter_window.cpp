@@ -28,17 +28,12 @@ bool FlutterWindow::OnCreate() {
   RegisterPlugins(flutter_controller_->engine());
   SetChildContent(flutter_controller_->view()->GetNativeWindow());
 
-  // this is for notifying the Dart code of a closing event.
-  notificationChannel = std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
-      flutter_controller_->engine()->messenger(),
-      "splash_window_close_notification",
-      &flutter::StandardMethodCodec::GetInstance());
-
-  // this is to react to the Dart code invocations.
-  auto methodChannel = std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
+  windowCloseChannel = std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
       flutter_controller_->engine()->messenger(),
       "splash_window_close",
       &flutter::StandardMethodCodec::GetInstance());
+
+
 
   // WIN32 default behavior is:
   // case WM_CLOSE: DestroyWindow(hwnd); return 0; // pressed close? destroy window.
@@ -47,7 +42,7 @@ bool FlutterWindow::OnCreate() {
   // So we hook into WM_CLOSE to let Flutter code react,
   // Return from Flutter by default with WM_DESTROY (by caling DestroyWindow)
   // And in the most dramatic case we post WM_QUIT.
-  methodChannel->SetMethodCallHandler(
+  windowCloseChannel->SetMethodCallHandler(
       [handle = GetHandle()](const flutter::MethodCall<flutter::EncodableValue> &call,
                              std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result)
       {
@@ -99,11 +94,11 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
       break;
 
     case WM_CLOSE:
-        notificationChannel->InvokeMethod("onWindowClose", nullptr);
+        windowCloseChannel->InvokeMethod("onWindowClose", nullptr);
         return 0;
     
     case WM_USER+7:
-        notificationChannel->InvokeMethod("onCustomCloseEvent", nullptr);
+        windowCloseChannel->InvokeMethod("onCustomCloseEvent", nullptr);
         return 0;
   }
 

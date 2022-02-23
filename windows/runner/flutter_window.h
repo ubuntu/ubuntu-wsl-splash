@@ -31,7 +31,7 @@ class FlutterWindow : public Win32Window {
   std::unique_ptr<flutter::FlutterViewController> flutter_controller_;
 
   // Method channel to notify Dart code with the closing event.
-  std::unique_ptr<flutter::MethodChannel<flutter::EncodableValue>> notificationChannel;
+  std::unique_ptr<flutter::MethodChannel<flutter::EncodableValue>> windowCloseChannel;
 };
 
 #endif  // RUNNER_FLUTTER_WINDOW_H_

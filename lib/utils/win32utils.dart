@@ -39,8 +39,8 @@ void setWindowTitle(String title) {
 class SplashWindowCloseNotifier {
   SplashWindowCloseNotifier._();
 
-  static Future<bool> Function()? _onCloseEventHandler;
-  static Future<bool> Function()? _onCustomCloseEventHandler;
+  static Future<bool?> Function()? _onCloseEventHandler;
+  static Future<bool?> Function()? _onCustomCloseEventHandler;
   static MethodChannel? _notificationChannel;
   static const MethodChannel _channel = MethodChannel('splash_window_close');
 
@@ -83,8 +83,8 @@ class SplashWindowCloseNotifier {
   /// });
   /// ```
   static void setWindowCloseHandler(
-      {Future<bool> Function()? onClose,
-      Future<bool> Function()? onCustomClose}) {
+      {Future<bool?> Function()? onClose,
+      Future<bool?> Function()? onCustomClose}) {
     _onCloseEventHandler = onClose;
     _onCustomCloseEventHandler = onCustomClose;
     if (_notificationChannel == null) {
@@ -93,7 +93,7 @@ class SplashWindowCloseNotifier {
         if (call.method == 'onCustomCloseEvent') {
           final handler = SplashWindowCloseNotifier._onCustomCloseEventHandler;
           if (handler != null) {
-            final result = await handler();
+            final result = await handler() ?? false;
             if (result) SplashWindowCloseNotifier.terminateWindow();
           }
         }
@@ -101,7 +101,7 @@ class SplashWindowCloseNotifier {
         if (call.method == 'onWindowClose') {
           final handler = SplashWindowCloseNotifier._onCloseEventHandler;
           if (handler != null) {
-            final result = await handler();
+            final result = await handler() ?? false;
             if (result) SplashWindowCloseNotifier.terminateWindow();
           } else {
             _channel.invokeMethod('quitWindow');

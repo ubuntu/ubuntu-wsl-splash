@@ -43,48 +43,51 @@ class AppHome extends StatefulWidget {
 }
 
 class _AppHomeState extends State<AppHome> {
+  Future<bool?> _showExitDialog() {
+    return showDialog<bool>(
+        context: context,
+        builder: (context) {
+          final lang = AppLocalizations.of(context);
+          return AlertDialog(
+              title: Text(lang.exitTitle),
+              content: Text(lang.exitContents),
+              actions: [
+                OutlinedButton(
+                  onPressed: () =>
+                      Navigator.of(context, rootNavigator: true).pop(true),
+                  child: const Text("Leave"),
+                ),
+                ElevatedButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: const Text("Cancel"),
+                ),
+              ]);
+        });
+  }
+
+  Future<bool?> _showCustomExitDialog() {
+    return showDialog<bool>(
+        context: context,
+        builder: (context) {
+          final lang = AppLocalizations.of(context);
+          return AlertDialog(
+              title: Text(lang.customExitTitle),
+              content: Text(lang.customExitContents),
+              actions: [
+                ElevatedButton(
+                    onPressed: () =>
+                        Navigator.of(context, rootNavigator: true).pop(true),
+                    child: Text(lang.ok)),
+              ]);
+        }).timeout(const Duration(seconds: 7), onTimeout: () => true);
+  }
+
   @override
   void initState() {
     super.initState();
     SplashWindowCloseNotifier.setWindowCloseHandler(
-      onClose: () async {
-        return await showDialog(
-            context: context,
-            builder: (context) {
-              final lang = AppLocalizations.of(context);
-              return AlertDialog(
-                  title: Text(lang.exitTitle),
-                  content: Text(lang.exitContents),
-                  actions: [
-                    OutlinedButton(
-                      onPressed: () =>
-                          Navigator.of(context, rootNavigator: true).pop(true),
-                      child: const Text("Leave"),
-                    ),
-                    ElevatedButton(
-                      onPressed: () => Navigator.of(context).pop(false),
-                      child: const Text("Cancel"),
-                    ),
-                  ]);
-            });
-      },
-      onCustomClose: () async {
-        return await showDialog(
-            context: context,
-            builder: (context) {
-              final lang = AppLocalizations.of(context);
-              return AlertDialog(
-                  title: Text(lang.customExitTitle),
-                  content: Text(lang.customExitContents),
-                  actions: [
-                    ElevatedButton(
-                        onPressed: () =>
-                            Navigator.of(context, rootNavigator: true)
-                                .pop(true),
-                        child: Text(lang.ok)),
-                  ]);
-            }).timeout(const Duration(seconds: 7), onTimeout: () => true);
-      },
+      onClose: _showExitDialog,
+      onCustomClose: _showCustomExitDialog,
     );
   }
 

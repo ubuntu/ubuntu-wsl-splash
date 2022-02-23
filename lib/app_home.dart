@@ -55,11 +55,11 @@ class _AppHomeState extends State<AppHome> {
                 OutlinedButton(
                   onPressed: () =>
                       Navigator.of(context, rootNavigator: true).pop(true),
-                  child: const Text("Leave"),
+                  child: Text(lang.leave),
                 ),
                 ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(false),
-                  child: const Text("Cancel"),
+                  child: Text(lang.cancel),
                 ),
               ]);
         });
@@ -133,7 +133,7 @@ class _AppHomeState extends State<AppHome> {
           height: kSpanElementSize,
           width: kSpanElementSize,
         );
-        title = const Text("Initializing...");
+        title = Text(lang.initializing);
         break;
 
       case InstallerState.unpacking:

@@ -17,6 +17,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcome => 'Welcome to Ubuntu';
 
   @override
+  String get initializing => 'Initializing...';
+
+  @override
   String get unpacking => 'Unpacking the distro';
 
   @override
@@ -48,6 +51,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ok => 'Ok';
+
+  @override
+  String get leave => 'Leave';
+
+  @override
+  String get cancel => 'Cancel';
 
   @override
   String get ubuntuOnWsl => 'Install a complete Ubuntu terminal environment in minutes on Windows with Windows Subsystem for Linux (WSL).\n\nAccess the Linux terminal on Windows, develop cross-platform applications, and manage IT infrastructure without leaving Windows.';

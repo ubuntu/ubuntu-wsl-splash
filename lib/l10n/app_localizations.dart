@@ -110,6 +110,12 @@ abstract class AppLocalizations {
   /// **'Welcome to Ubuntu'**
   String get welcome;
 
+  /// No description provided for @initializing.
+  ///
+  /// In en, this message translates to:
+  /// **'Initializing...'**
+  String get initializing;
+
   /// No description provided for @unpacking.
   ///
   /// In en, this message translates to:
@@ -175,6 +181,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ok'**
   String get ok;
+
+  /// No description provided for @leave.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave'**
+  String get leave;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
 
   /// No description provided for @ubuntuOnWsl.
   ///

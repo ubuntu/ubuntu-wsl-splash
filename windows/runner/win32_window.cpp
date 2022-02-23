@@ -271,10 +271,11 @@ namespace {
     if (hPipe == INVALID_HANDLE_VALUE) {
       return true;
     }
+    using defer = std::unique_ptr<std::remove_pointer_t<HANDLE>, decltype(&::CloseHandle)>;
+    defer fileCloser{hPipe, &::CloseHandle};
     if (!::WriteFile(hPipe, buffer, size, &bytesWritten, NULL) || bytesWritten != size) {
       return true;
     }
-    ::CloseHandle(hPipe);
     return true;
   }
 }

@@ -87,7 +87,7 @@ class _AppHomeState extends State<AppHome> {
     super.initState();
     SplashWindowCloseNotifier.setWindowCloseHandler(
       onClose: _showExitDialog,
-      onCustomClose: _showCustomExitDialog,
+      onCustomHide: _showCustomExitDialog,
     );
   }
 

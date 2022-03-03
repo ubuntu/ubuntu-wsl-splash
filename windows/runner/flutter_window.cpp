@@ -102,7 +102,11 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
         return 0;
     
     case WM_USER+7:
-        windowCloseChannel->InvokeMethod("onCustomCloseEvent", nullptr);
+        windowCloseChannel->InvokeMethod("onCustomHideEvent", nullptr);
+        return 0;
+
+    case WM_USER+8:
+        DestroyWindow(hwnd);
         return 0;
   }
 

@@ -40,7 +40,7 @@ class SplashWindowCloseNotifier {
   SplashWindowCloseNotifier._();
 
   static Future<bool?> Function()? _onCloseEventHandler;
-  static Future<bool?> Function()? _onCustomCloseEventHandler;
+  static Future<bool?> Function()? _onCustomHideEventHandler;
   static const MethodChannel _channel = MethodChannel('splash_window_close');
 
   /// Sets a function to handle window close events.
@@ -56,9 +56,9 @@ class SplashWindowCloseNotifier {
   /// passing null to the method.
   ///
   /// Besides WM_CLOSE, its possible to react to WM_USER+7 code through the
-  /// [onCustomClose] callback. It shares the same phylosophy of [onClose]
+  /// [onCustomHide] callback. It shares the same phylosophy of [onClose]
   /// but it's less strict, i.e., does nothing it the parameter is null.
-  /// For the usage in WSL, though, [onCustomClose] is even more important
+  /// For the usage in WSL, though, [onCustomHide] is even more important
   /// because that's the message the launcher will issue.
   ///
   /// Example:
@@ -83,16 +83,16 @@ class SplashWindowCloseNotifier {
   /// ```
   static void setWindowCloseHandler(
       {Future<bool?> Function()? onClose,
-      Future<bool?> Function()? onCustomClose}) {
+      Future<bool?> Function()? onCustomHide}) {
     _onCloseEventHandler = onClose;
-    _onCustomCloseEventHandler = onCustomClose;
+    _onCustomHideEventHandler = onCustomHide;
 
     _channel.setMethodCallHandler((call) async {
-      if (call.method == 'onCustomCloseEvent') {
-        final handler = SplashWindowCloseNotifier._onCustomCloseEventHandler;
+      if (call.method == 'onCustomHideEvent') {
+        final handler = SplashWindowCloseNotifier._onCustomHideEventHandler;
         if (handler != null) {
           final result = await handler() ?? false;
-          if (result) SplashWindowCloseNotifier.terminateWindow();
+          if (result) SplashWindowCloseNotifier.hideWindow();
         }
       }
 

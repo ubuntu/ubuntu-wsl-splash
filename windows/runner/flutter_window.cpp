@@ -50,6 +50,10 @@ bool FlutterWindow::OnCreate() {
           PostMessage(handle, WM_CLOSE, 0, 0);
           result->Success(flutter::EncodableValue(nullptr));
         }
+        if (call.method_name().compare("hideWindow") == 0) {
+          ShowWindow(handle, SW_HIDE);
+          result->Success(flutter::EncodableValue(nullptr));
+        }
         else if (call.method_name().compare("destroyWindow") == 0) {
           DestroyWindow(handle);
           result->Success(flutter::EncodableValue(nullptr));
@@ -98,7 +102,11 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
         return 0;
     
     case WM_USER+7:
-        windowCloseChannel->InvokeMethod("onCustomCloseEvent", nullptr);
+        windowCloseChannel->InvokeMethod("onCustomHideEvent", nullptr);
+        return 0;
+
+    case WM_USER+8:
+        DestroyWindow(hwnd);
         return 0;
   }
 

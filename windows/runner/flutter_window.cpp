@@ -50,6 +50,10 @@ bool FlutterWindow::OnCreate() {
           PostMessage(handle, WM_CLOSE, 0, 0);
           result->Success(flutter::EncodableValue(nullptr));
         }
+        if (call.method_name().compare("hideWindow") == 0) {
+          ShowWindow(handle, SW_HIDE);
+          result->Success(flutter::EncodableValue(nullptr));
+        }
         else if (call.method_name().compare("destroyWindow") == 0) {
           DestroyWindow(handle);
           result->Success(flutter::EncodableValue(nullptr));

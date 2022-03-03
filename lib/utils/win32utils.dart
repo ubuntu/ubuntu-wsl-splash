@@ -116,4 +116,8 @@ class SplashWindowCloseNotifier {
   static void terminateWindow() {
     _channel.invokeMethod('destroyWindow');
   }
+
+  static void hideWindow() {
+    _channel.invokeMethod('hideWindow');
+  }
 }

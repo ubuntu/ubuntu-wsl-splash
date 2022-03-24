@@ -42,4 +42,4 @@ const kRadioSize = Size.square(kMinInteractiveDimension - 8);
 const kSpanElementSize = 16.0;
 
 /// The height of the slide page with its descendants.
-const kSlidePageHeight = 460.0;
+const kSlidePageHeight = 500.0;

@@ -197,8 +197,86 @@ abstract class AppLocalizations {
   /// No description provided for @ubuntuOnWsl.
   ///
   /// In en, this message translates to:
-  /// **'Install a complete Ubuntu terminal environment in minutes on Windows with Windows Subsystem for Linux (WSL).\n\nAccess the Linux terminal on Windows, develop cross-platform applications, and manage IT infrastructure without leaving Windows.'**
+  /// **'Ubuntu on WSL'**
   String get ubuntuOnWsl;
+
+  /// No description provided for @ubuntuOnWslText.
+  ///
+  /// In en, this message translates to:
+  /// **'WSL delivers the full Ubuntu terminal environment to develop cross-platform applications and manage IT infrastructure without leaving Windows.'**
+  String get ubuntuOnWslText;
+
+  /// No description provided for @ubuntuWslWebDev.
+  ///
+  /// In en, this message translates to:
+  /// **'Ubuntu WSL for\nWeb Development'**
+  String get ubuntuWslWebDev;
+
+  /// No description provided for @ubuntuWslWebDevText.
+  ///
+  /// In en, this message translates to:
+  /// **'Develop in WSL using native Windows IDEs including VS Code and IntelliJ and benefit\nfrom full NodeJS and Ruby support.'**
+  String get ubuntuWslWebDevText;
+
+  /// No description provided for @ubuntuWslDataScience.
+  ///
+  /// In en, this message translates to:
+  /// **'Ubuntu WSL for Data Science'**
+  String get ubuntuWslDataScience;
+
+  /// No description provided for @ubuntuWslDataScienceText.
+  ///
+  /// In en, this message translates to:
+  /// **'NVIDIA Data Science Stack lets you maximize the performance of Data Science and\nMachine Learning projects on top of native Windows NVIDIA drivers.'**
+  String get ubuntuWslDataScienceText;
+
+  /// No description provided for @ubuntuWslGuiApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Ubuntu WSL for\nGraphical Apps'**
+  String get ubuntuWslGuiApps;
+
+  /// No description provided for @ubuntuWslGuiAppsText.
+  ///
+  /// In en, this message translates to:
+  /// **'Develop and preview web and graphical applications on Linux using WSLg for multi-platform development.'**
+  String get ubuntuWslGuiAppsText;
+
+  /// No description provided for @ubuntuWslDevOps.
+  ///
+  /// In en, this message translates to:
+  /// **'Ubuntu WSL for DevOps'**
+  String get ubuntuWslDevOps;
+
+  /// No description provided for @ubuntuWslDevOpsText.
+  ///
+  /// In en, this message translates to:
+  /// **'Ensure CI/CD pipeline compatibility by developing on Ubuntu WSL locally before publishing to an Ubuntu production environment'**
+  String get ubuntuWslDevOpsText;
+
+  /// No description provided for @ubuntuWslEnterprises.
+  ///
+  /// In en, this message translates to:
+  /// **'Ubuntu WSL for Enterprises'**
+  String get ubuntuWslEnterprises;
+
+  /// No description provided for @ubuntuWslEnterprisesText.
+  ///
+  /// In en, this message translates to:
+  /// **'Empower developers in a Windows\nenterprise ecosystem with a certified\nUbuntu LTS.'**
+  String get ubuntuWslEnterprisesText;
+
+  /// No description provided for @findOutMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Find out more'**
+  String get findOutMore;
+
+  /// No description provided for @findOutMoreText.
+  ///
+  /// In en, this message translates to:
+  /// **'Visit Ubuntu.com/wsl to find out more about Ubuntu on WSL and how Canonical supports developers and organisations.'**
+  String get findOutMoreText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

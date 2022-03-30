@@ -17,5 +17,18 @@
     "ok" : "Ok",
     "leave" : "Leave",
     "cancel" : "Cancel",
-    "ubuntuOnWsl": "Install a complete Ubuntu terminal environment in minutes on Windows with Windows Subsystem for Linux (WSL).\n\nAccess the Linux terminal on Windows, develop cross-platform applications, and manage IT infrastructure without leaving Windows."
+    "ubuntuOnWsl": "Ubuntu on WSL",
+    "ubuntuOnWslText": "WSL delivers the full Ubuntu terminal environment to develop cross-platform applications and manage IT infrastructure without leaving Windows.",
+    "ubuntuWslWebDev": "Ubuntu WSL for\nWeb Development",
+    "ubuntuWslWebDevText": "Develop in WSL using native Windows IDEs including VS Code and IntelliJ and benefit\nfrom full NodeJS and Ruby support.",
+    "ubuntuWslDataScience":"Ubuntu WSL for Data Science",
+    "ubuntuWslDataScienceText":"NVIDIA Data Science Stack lets you maximize the performance of Data Science and\nMachine Learning projects on top of native Windows NVIDIA drivers.",
+    "ubuntuWslGuiApps":"Ubuntu WSL for\nGraphical Apps",
+    "ubuntuWslGuiAppsText":"Develop and preview web and graphical applications on Linux using WSLg for multi-platform development.",
+    "ubuntuWslDevOps":"Ubuntu WSL for DevOps",
+    "ubuntuWslDevOpsText":"Ensure CI/CD pipeline compatibility by developing on Ubuntu WSL locally before publishing to an Ubuntu production environment",
+    "ubuntuWslEnterprises":"Ubuntu WSL for Enterprises",
+    "ubuntuWslEnterprisesText":"Empower developers in a Windows\nenterprise ecosystem with a certified\nUbuntu LTS.",
+    "findOutMore":"Find out more",
+    "findOutMoreText":"Visit Ubuntu.com/wsl to find out more about Ubuntu on WSL and how Canonical supports developers and organisations."
 }

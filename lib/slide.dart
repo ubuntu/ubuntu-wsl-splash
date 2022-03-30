@@ -96,19 +96,40 @@ List<Slide> theSlides(BuildContext context) {
   final theSameAsset = SvgPicture.asset('assets/1-Ubuntu on WSL.svg');
   return [
     Slide(
-      image: theSameAsset,
+      image: SvgPicture.asset('assets/1-Ubuntu on WSL.svg'),
       title: lang.welcome,
-      text: lang.ubuntuOnWsl,
+      subtitle: lang.ubuntuOnWsl,
+      text: lang.ubuntuOnWslText,
     ),
     Slide(
-      image: theSameAsset,
-      title: 'WSL S2 Ubuntu',
-      text: lang.ubuntuOnWsl,
+      image: SvgPicture.asset('assets/2-Ubuntu WSL for Web Dev.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslWebDev,
+      text: lang.ubuntuWslWebDevText,
     ),
     Slide(
-      image: theSameAsset,
-      title: 'So do I',
-      text: lang.ubuntuOnWsl,
+      image: SvgPicture.asset('assets/3-Ubuntu WSL for Data Science.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslDataScience,
+      text: lang.ubuntuWslDataScienceText,
+    ),
+    Slide(
+      image: SvgPicture.asset('assets/4-Ubuntu WSL for Graphical Apps.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslGuiApps,
+      text: lang.ubuntuWslGuiAppsText,
+    ),
+    Slide(
+      image: SvgPicture.asset('assets/5-Ubuntu WSL for DevOps.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslDevOps,
+      text: lang.ubuntuWslDevOpsText,
+    ),
+    Slide(
+      image: SvgPicture.asset('assets/6-Ubuntu WSL for Enterprises.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslEnterprises,
+      text: lang.ubuntuWslEnterprisesText,
     ),
   ];
 }

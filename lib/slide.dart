@@ -16,22 +16,26 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'constants.dart';
 import 'l10n/app_localizations.dart';
 
 /// Implements the look of a single slide presented by WSL splash screen.
 class Slide extends StatelessWidget {
-  static const kInSlideSpacing = 3 * kContentSpacing;
+  static const kInSlideLeftSpacing = 1 * kContentSpacing;
+  static const kInSlideSpacing = 5 * kContentSpacing;
   const Slide({
     Key? key,
     required this.image,
     required this.title,
+    required this.subtitle,
     required this.text,
   }) : super(key: key);
 
-  final ImageProvider image;
+  final Widget image;
   final String title;
+  final String subtitle;
   final String text;
 
   @override
@@ -44,24 +48,38 @@ class Slide extends StatelessWidget {
           automaticallyImplyLeading: false,
         ),
         SizedBox(
-          height: 400,
+          height: kSlideContentHeight,
           child: Padding(
-            padding: const EdgeInsets.all(kInSlideSpacing),
+            padding: const EdgeInsets.fromLTRB(
+              kInSlideLeftSpacing,
+              kInSlideSpacing,
+              kInSlideSpacing,
+              kInSlideSpacing,
+            ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Image(
-                  image: image,
-                  fit: BoxFit.fitHeight,
+                Expanded(
+                  child: image,
                 ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: kInSlideSpacing),
-                    child: Text(
-                      text,
-                      style: Theme.of(context).textTheme.headline6!.copyWith(
-                          color: Colors.white70, fontWeight: FontWeight.normal),
-                    ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        subtitle,
+                        style: Theme.of(context).textTheme.headline4!.copyWith(
+                            color: Colors.white70,
+                            fontSize: 32,
+                            fontWeight: FontWeight.normal),
+                      ),
+                      Text(
+                        text,
+                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                            color: Colors.white70,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -73,10 +91,9 @@ class Slide extends StatelessWidget {
   }
 }
 
-// TODO: update this to match the real design when it gets complete.
 List<Slide> theSlides(BuildContext context) {
   final lang = AppLocalizations.of(context);
-  const theSameAsset = AssetImage('assets/ubuntu-on-wsl.png');
+  final theSameAsset = SvgPicture.asset('assets/1-Ubuntu on WSL.svg');
   return [
     Slide(
       image: theSameAsset,

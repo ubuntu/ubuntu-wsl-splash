@@ -43,3 +43,6 @@ const kSpanElementSize = 16.0;
 
 /// The height of the slide page with its descendants.
 const kSlidePageHeight = 500.0;
+
+/// The slide background/content height.
+const kSlideContentHeight = 400.0;

@@ -128,10 +128,19 @@ bool Win32Window::CreateAndShow(const std::wstring& title,
     return false;
   }
 
+// The scaling factors applied below origin from experimentation looking for a 
+// nice form factor that ensures the OOBE window get's completely hidden behind
+// the slide show in case it becomes visible before the launcher grabs its HWND
+// and toggle is visibility off.
   const int ubuntuDefaultWidth = static_cast<int>(960 * 1.025);
   const int ubuntuDefaultHeight =  static_cast<int>(680 * 1.05);
-  int x = (GetSystemMetrics(SM_CXSCREEN) - ubuntuDefaultWidth) / 2;
-  ::SetWindowPos(window, nullptr, Scale(x, scale_factor), 0,
+  MONITORINFO mInfo;
+  mInfo.cbSize = sizeof(MONITORINFO);
+  GetMonitorInfo(monitor, &mInfo);
+  int x = (mInfo.rcWork.right - ubuntuDefaultWidth) / 2;
+  int y = (mInfo.rcWork.bottom - ubuntuDefaultHeight) / 2;
+  ::SetWindowPos(window, nullptr, Scale(x, scale_factor), 
+                   Scale(y, scale_factor),
                    Scale(ubuntuDefaultWidth, scale_factor),
                    Scale(ubuntuDefaultHeight, scale_factor),
                    SWP_NOACTIVATE | SWP_NOOWNERZORDER);

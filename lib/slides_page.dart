@@ -38,16 +38,17 @@ class SlidesPage extends StatelessWidget {
         children: <Widget>[
           SizedBox(
             height: kSlidePageHeight,
-            child: Stack(
-              children: <Widget>[
-                const Image(
-                  image: AssetImage('assets/bg.jpg'),
-                  fit: BoxFit.cover,
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/Ubuntu WSL_bgrd_x1.png'),
+                  fit: BoxFit.fill,
                 ),
-                SlideShow(
-                  slides: slides,
-                ),
-              ],
+              ),
+              child: SlideShow(
+                slides: slides,
+                interval: const Duration(seconds: 10),
+              ),
             ),
           ),
           bottom,

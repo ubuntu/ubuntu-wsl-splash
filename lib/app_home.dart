@@ -185,7 +185,7 @@ class _AppHomeState extends State<AppHome> {
         break;
     }
 
-    int maxLines = state == InstallerState.error ? 4 : 5;
+    int maxLines = state == InstallerState.error ? 5 : 6;
 
     return InstallerStatus(
       title: title,

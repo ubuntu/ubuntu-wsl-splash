@@ -22,13 +22,14 @@ void main() {
       InstallerState.done,
     ];
 
-    const title = "Ubuntu on WSL";
-    const asset = AssetImage("assets/ubuntu-on-wsl.png");
+    const title = "Welcome to Ubuntu WSL";
+    const subtitle = "Ubuntu on WSL";
+    final asset = Image.asset("assets/ubuntu-on-wsl.png");
 
-    const slides = [
-      Slide(image: asset, title: title, text: "1"),
-      Slide(image: asset, title: title, text: "2"),
-      Slide(image: asset, title: title, text: "3"),
+    final slides = [
+      Slide(image: asset, title: title, subtitle: subtitle, text: "1"),
+      Slide(image: asset, title: title, subtitle: subtitle, text: "2"),
+      Slide(image: asset, title: title, subtitle: subtitle, text: "3"),
     ];
     final controller = FakeController();
     await tester.pumpWidget(

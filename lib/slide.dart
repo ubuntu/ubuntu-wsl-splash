@@ -15,24 +15,41 @@
  *
  */
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/link.dart';
 
 import 'constants.dart';
 import 'l10n/app_localizations.dart';
 
 /// Implements the look of a single slide presented by WSL splash screen.
 class Slide extends StatelessWidget {
-  static const kInSlideSpacing = 3 * kContentSpacing;
+  static const kInSlideLeftSpacing = 1 * kContentSpacing;
+  static const kInSlideSpacing = 5 * kContentSpacing;
   const Slide({
     Key? key,
     required this.image,
     required this.title,
+    required this.subtitle,
     required this.text,
+    this.span,
   }) : super(key: key);
 
-  final ImageProvider image;
+  const Slide.withRichText({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.subtitle,
+    required this.span,
+    this.text,
+  }) : super(key: key);
+
+  final Widget image;
   final String title;
-  final String text;
+  final String subtitle;
+  final String? text;
+  final List<InlineSpan>? span;
 
   @override
   Widget build(BuildContext context) {
@@ -43,25 +60,39 @@ class Slide extends StatelessWidget {
           title: Text(title),
           automaticallyImplyLeading: false,
         ),
-        SizedBox(
-          height: 400,
+        Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(kInSlideSpacing),
+            padding: const EdgeInsets.fromLTRB(
+              kInSlideLeftSpacing,
+              kInSlideSpacing,
+              kInSlideSpacing,
+              kInSlideSpacing,
+            ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Image(
-                  image: image,
-                  fit: BoxFit.fitHeight,
+                Expanded(
+                  child: image,
                 ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: kInSlideSpacing),
-                    child: Text(
-                      text,
-                      style: Theme.of(context).textTheme.headline6!.copyWith(
-                          color: Colors.white70, fontWeight: FontWeight.normal),
-                    ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        subtitle,
+                        style: Theme.of(context).textTheme.headline4!.copyWith(
+                            color: Colors.white70,
+                            fontSize: 32,
+                            fontWeight: FontWeight.normal),
+                      ),
+                      if (span != null)
+                        RichText(text: TextSpan(children: span)),
+                      if (text != null)
+                        Text(
+                          text!,
+                          style: _bodyTextStyle(context),
+                        ),
+                    ],
                   ),
                 ),
               ],
@@ -73,25 +104,80 @@ class Slide extends StatelessWidget {
   }
 }
 
-// TODO: update this to match the real design when it gets complete.
 List<Slide> theSlides(BuildContext context) {
   final lang = AppLocalizations.of(context);
-  const theSameAsset = AssetImage('assets/ubuntu-on-wsl.png');
+  final bodyStyle = _bodyTextStyle(context);
+  final linkStyle = bodyStyle.copyWith(
+    color: Colors.white,
+    decoration: TextDecoration.underline,
+  );
   return [
     Slide(
-      image: theSameAsset,
+      image: SvgPicture.asset('assets/1-Ubuntu on WSL.svg'),
       title: lang.welcome,
-      text: lang.ubuntuOnWsl,
+      subtitle: lang.ubuntuOnWsl,
+      text: lang.ubuntuOnWslText,
     ),
     Slide(
-      image: theSameAsset,
-      title: 'WSL S2 Ubuntu',
-      text: lang.ubuntuOnWsl,
+      image: SvgPicture.asset('assets/2-Ubuntu WSL for Web Dev.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslWebDev,
+      text: lang.ubuntuWslWebDevText,
     ),
     Slide(
-      image: theSameAsset,
-      title: 'So do I',
-      text: lang.ubuntuOnWsl,
+      image: SvgPicture.asset('assets/3-Ubuntu WSL for Data Science.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslDataScience,
+      text: lang.ubuntuWslDataScienceText,
+    ),
+    Slide(
+      image: SvgPicture.asset('assets/4-Ubuntu WSL for Graphical Apps.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslGuiApps,
+      text: lang.ubuntuWslGuiAppsText,
+    ),
+    Slide(
+      image: SvgPicture.asset('assets/5-Ubuntu WSL for DevOps.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslDevOps,
+      text: lang.ubuntuWslDevOpsText,
+    ),
+    Slide(
+      image: SvgPicture.asset('assets/6-Ubuntu WSL for Enterprises.svg'),
+      title: lang.welcome,
+      subtitle: lang.ubuntuWslEnterprises,
+      text: lang.ubuntuWslEnterprisesText,
+    ),
+    Slide.withRichText(
+      image: SvgPicture.asset('assets/7-Ubuntu Logo TAG.svg'),
+      title: lang.welcome,
+      subtitle: lang.findOutMore,
+      span: [
+        TextSpan(text: lang.findOutMoreVisit, style: bodyStyle),
+        WidgetSpan(
+          child: Link(
+            uri: Uri.parse('https://ubuntu.com/wsl'),
+            builder: (context, followLink) => Text.rich(
+              TextSpan(
+                text: lang.findOutMoreLink,
+                style: linkStyle,
+                recognizer: TapGestureRecognizer()..onTap = followLink,
+              ),
+            ),
+          ),
+        ),
+        TextSpan(
+          text: lang.findOutMoreText,
+          style: bodyStyle,
+        ),
+      ],
     ),
   ];
+}
+
+TextStyle _bodyTextStyle(BuildContext context) {
+  return Theme.of(context)
+      .textTheme
+      .headline6!
+      .copyWith(color: Colors.white70, fontWeight: FontWeight.normal);
 }

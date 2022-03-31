@@ -47,6 +47,7 @@ class SlidesPage extends StatelessWidget {
               ),
               child: SlideShow(
                 slides: slides,
+                interval: const Duration(seconds: 10),
               ),
             ),
           ),

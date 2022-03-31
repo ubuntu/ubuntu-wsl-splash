@@ -52,6 +52,7 @@ class InstallerStateController {
         InstallerState.unpacking,
     RegExp(".*Error:.*"): InstallerState.error,
     RegExp("^Installation successful!\$"): InstallerState.settingUp,
+    RegExp("^Unpacking is complete!\$"): InstallerState.settingUp,
     RegExp("Launching .*"): InstallerState.running,
   };
 

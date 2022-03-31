@@ -128,9 +128,9 @@ bool Win32Window::CreateAndShow(const std::wstring& title,
     return false;
   }
 
-  const int ubuntuDefaultWidth = static_cast<int>(960*1.025);
-  const int ubuntuDefaultHeight =  static_cast<int>(680*1.05);
-  int x = (GetSystemMetrics(SM_CXSCREEN)-ubuntuDefaultWidth)/2;
+  const int ubuntuDefaultWidth = static_cast<int>(960 * 1.025);
+  const int ubuntuDefaultHeight =  static_cast<int>(680 * 1.05);
+  int x = (GetSystemMetrics(SM_CXSCREEN) - ubuntuDefaultWidth) / 2;
   ::SetWindowPos(window, nullptr, Scale(x, scale_factor), 0,
                    Scale(ubuntuDefaultWidth, scale_factor),
                    Scale(ubuntuDefaultHeight, scale_factor),

@@ -9,18 +9,24 @@ void main() {
   // need to lift the slide show buttons, then the existance of this test will
   // make more sense than now.
   testWidgets('Slides Page test widget', (WidgetTester tester) async {
-    const title = "Ubuntu on WSL";
-    const asset = AssetImage("assets/ubuntu-on-wsl.png");
+    const title = "Welcome to Ubuntu WSL";
+    const subtitle = "Ubuntu on WSL";
+    final asset = Image.asset("assets/ubuntu-on-wsl.png");
     const bottomText = "This is a test";
 
-    const app = MaterialApp(
+    final app = MaterialApp(
       home: SlidesPage(
         [
-          Slide(image: asset, title: title, text: "1"),
-          Slide(image: asset, title: title, text: "2"),
-          Slide(image: asset, title: title, text: "3"),
+          Slide(image: asset, title: title, subtitle: subtitle, text: "1"),
+          Slide(image: asset, title: title, subtitle: subtitle, text: "2"),
+          Slide(image: asset, title: title, subtitle: subtitle, text: "3"),
+          Slide.withRichText(
+              image: asset,
+              title: title,
+              subtitle: subtitle,
+              span: const [TextSpan(text: "4")]),
         ],
-        bottom: Text(bottomText),
+        bottom: const Text(bottomText),
       ),
     );
 
@@ -32,7 +38,7 @@ void main() {
     expect(find.byIcon(Icons.chevron_left), findsNothing);
     expect(find.text("1"), findsWidgets);
     expect(find.text("2"), findsNothing);
-    expect(find.image(asset), findsWidgets);
+    expect(find.image(asset.image), findsWidgets);
 
     await tester.tap(rightButton);
     await tester.pumpAndSettle();
@@ -44,6 +50,22 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text("3"), findsWidgets);
     expect(find.byIcon(Icons.chevron_left), findsOneWidget);
+    expect(find.byIcon(Icons.chevron_right), findsOneWidget);
+
+    await tester.tap(rightButton);
+    await tester.pumpAndSettle();
+    expect(
+        find.byWidgetPredicate(
+            (widget) => _fromRichTextToPlainText(widget) == "4"),
+        findsWidgets);
+    expect(find.byIcon(Icons.chevron_left), findsOneWidget);
     expect(find.byIcon(Icons.chevron_right), findsNothing);
   });
+}
+
+String? _fromRichTextToPlainText(final Widget widget) {
+  if (widget is RichText) {
+    return widget.text.toPlainText();
+  }
+  return null;
 }

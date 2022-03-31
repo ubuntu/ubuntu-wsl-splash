@@ -60,8 +60,7 @@ class Slide extends StatelessWidget {
           title: Text(title),
           automaticallyImplyLeading: false,
         ),
-        SizedBox(
-          height: kSlideContentHeight,
+        Expanded(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(
               kInSlideLeftSpacing,
@@ -76,7 +75,7 @@ class Slide extends StatelessWidget {
                 ),
                 Expanded(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(

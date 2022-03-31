@@ -15,8 +15,10 @@
  *
  */
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/link.dart';
 
 import 'constants.dart';
 import 'l10n/app_localizations.dart';
@@ -31,12 +33,23 @@ class Slide extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.text,
+    this.span,
+  }) : super(key: key);
+
+  const Slide.withRichText({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.subtitle,
+    required this.span,
+    this.text,
   }) : super(key: key);
 
   final Widget image;
   final String title;
   final String subtitle;
-  final String text;
+  final String? text;
+  final List<InlineSpan>? span;
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +86,13 @@ class Slide extends StatelessWidget {
                             fontSize: 32,
                             fontWeight: FontWeight.normal),
                       ),
-                      Text(
-                        text,
-                        style: Theme.of(context).textTheme.headline6!.copyWith(
-                            color: Colors.white70,
-                            fontWeight: FontWeight.normal),
-                      ),
+                      if (span != null)
+                        RichText(text: TextSpan(children: span)),
+                      if (text != null)
+                        Text(
+                          text!,
+                          style: _bodyTextStyle(context),
+                        ),
                     ],
                   ),
                 ),
@@ -93,7 +107,11 @@ class Slide extends StatelessWidget {
 
 List<Slide> theSlides(BuildContext context) {
   final lang = AppLocalizations.of(context);
-  final theSameAsset = SvgPicture.asset('assets/1-Ubuntu on WSL.svg');
+  final bodyStyle = _bodyTextStyle(context);
+  final linkStyle = bodyStyle.copyWith(
+    color: Colors.white,
+    decoration: TextDecoration.underline,
+  );
   return [
     Slide(
       image: SvgPicture.asset('assets/1-Ubuntu on WSL.svg'),
@@ -131,5 +149,36 @@ List<Slide> theSlides(BuildContext context) {
       subtitle: lang.ubuntuWslEnterprises,
       text: lang.ubuntuWslEnterprisesText,
     ),
+    Slide.withRichText(
+      image: SvgPicture.asset('assets/7-Ubuntu Logo TAG.svg'),
+      title: lang.welcome,
+      subtitle: lang.findOutMore,
+      span: [
+        TextSpan(text: lang.findOutMoreVisit, style: bodyStyle),
+        WidgetSpan(
+          child: Link(
+            uri: Uri.parse('https://ubuntu.com/wsl'),
+            builder: (context, followLink) => Text.rich(
+              TextSpan(
+                text: lang.findOutMoreLink,
+                style: linkStyle,
+                recognizer: TapGestureRecognizer()..onTap = followLink,
+              ),
+            ),
+          ),
+        ),
+        TextSpan(
+          text: lang.findOutMoreText,
+          style: bodyStyle,
+        ),
+      ],
+    ),
   ];
+}
+
+TextStyle _bodyTextStyle(BuildContext context) {
+  return Theme.of(context)
+      .textTheme
+      .headline6!
+      .copyWith(color: Colors.white70, fontWeight: FontWeight.normal);
 }

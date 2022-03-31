@@ -37,7 +37,7 @@ dependencies:
     git:
       url: https://github.com/canonical/ubuntu-flutter-plugins.git
       path: packages/ubuntu_widgets
-
+  url_launcher: ^6.0.20
   win32: ^2.3.0
   yaru: ^0.2.0
   yaru_icons: ^0.1.2

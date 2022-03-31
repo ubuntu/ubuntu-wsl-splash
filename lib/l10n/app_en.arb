@@ -30,5 +30,7 @@
     "ubuntuWslEnterprises":"Ubuntu WSL for Enterprises",
     "ubuntuWslEnterprisesText":"Empower developers in a Windows\nenterprise ecosystem with a certified\nUbuntu LTS.",
     "findOutMore":"Find out more",
-    "findOutMoreText":"Visit Ubuntu.com/wsl to find out more about Ubuntu on WSL and how Canonical supports developers and organisations."
+    "findOutMoreVisit":"Visit ",
+    "findOutMoreLink":"Ubuntu.com/wsl",
+    "findOutMoreText": " to find out more about Ubuntu on WSL and how Canonical supports developers and organisations."
 }

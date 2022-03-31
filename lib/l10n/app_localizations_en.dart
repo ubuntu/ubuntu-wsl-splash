@@ -98,5 +98,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get findOutMore => 'Find out more';
 
   @override
-  String get findOutMoreText => 'Visit Ubuntu.com/wsl to find out more about Ubuntu on WSL and how Canonical supports developers and organisations.';
+  String get findOutMoreVisit => 'Visit ';
+
+  @override
+  String get findOutMoreLink => 'Ubuntu.com/wsl';
+
+  @override
+  String get findOutMoreText => ' to find out more about Ubuntu on WSL and how Canonical supports developers and organisations.';
 }

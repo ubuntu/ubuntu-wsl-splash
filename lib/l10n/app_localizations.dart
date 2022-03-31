@@ -272,10 +272,22 @@ abstract class AppLocalizations {
   /// **'Find out more'**
   String get findOutMore;
 
+  /// No description provided for @findOutMoreVisit.
+  ///
+  /// In en, this message translates to:
+  /// **'Visit '**
+  String get findOutMoreVisit;
+
+  /// No description provided for @findOutMoreLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Ubuntu.com/wsl'**
+  String get findOutMoreLink;
+
   /// No description provided for @findOutMoreText.
   ///
   /// In en, this message translates to:
-  /// **'Visit Ubuntu.com/wsl to find out more about Ubuntu on WSL and how Canonical supports developers and organisations.'**
+  /// **' to find out more about Ubuntu on WSL and how Canonical supports developers and organisations.'**
   String get findOutMoreText;
 }
 

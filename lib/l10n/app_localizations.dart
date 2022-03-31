@@ -107,7 +107,7 @@ abstract class AppLocalizations {
   /// No description provided for @welcome.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to Ubuntu'**
+  /// **'Welcome to Ubunt WSL'**
   String get welcome;
 
   /// No description provided for @initializing.

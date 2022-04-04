@@ -14,7 +14,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get windowTitle => 'Installing Ubuntu on WSL';
 
   @override
-  String get welcome => 'Welcome to Ubunt WSL';
+  String get welcome => 'Welcome to Ubuntu WSL';
 
   @override
   String get initializing => 'Initializing...';

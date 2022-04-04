@@ -2,7 +2,7 @@
     "@@locale": "en",
     "appTitle": "What to expect from Ubuntu on WSL",
     "windowTitle": "Installing Ubuntu on WSL",
-    "welcome": "Welcome to Ubunt WSL",
+    "welcome": "Welcome to Ubuntu WSL",
     "initializing" : "Initializing...",
     "unpacking": "Unpacking the distro",
     "installing": "Almost done. The installer will require your attention soon.",

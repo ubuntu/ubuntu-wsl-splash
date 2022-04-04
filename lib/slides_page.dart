@@ -41,7 +41,7 @@ class SlidesPage extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/Ubuntu WSL_bgrd_x1.png'),
+                  image: AssetImage('assets/Ubuntu_WSL_bgrd_x1.png'),
                   fit: BoxFit.fill,
                 ),
               ),

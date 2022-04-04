@@ -113,43 +113,43 @@ List<Slide> theSlides(BuildContext context) {
   );
   return [
     Slide(
-      image: SvgPicture.asset('assets/1-Ubuntu on WSL.svg'),
+      image: SvgPicture.asset('assets/1-Ubuntu_on_WSL.svg'),
       title: lang.welcome,
       subtitle: lang.ubuntuOnWsl,
       text: lang.ubuntuOnWslText,
     ),
     Slide(
-      image: SvgPicture.asset('assets/2-Ubuntu WSL for Web Dev.svg'),
+      image: SvgPicture.asset('assets/2-Ubuntu_WSL_for_Web_Dev.svg'),
       title: lang.welcome,
       subtitle: lang.ubuntuWslWebDev,
       text: lang.ubuntuWslWebDevText,
     ),
     Slide(
-      image: SvgPicture.asset('assets/3-Ubuntu WSL for Data Science.svg'),
+      image: SvgPicture.asset('assets/3-Ubuntu_WSL_for_Data_Science.svg'),
       title: lang.welcome,
       subtitle: lang.ubuntuWslDataScience,
       text: lang.ubuntuWslDataScienceText,
     ),
     Slide(
-      image: SvgPicture.asset('assets/4-Ubuntu WSL for Graphical Apps.svg'),
+      image: SvgPicture.asset('assets/4-Ubuntu_WSL_for_Graphical_Apps.svg'),
       title: lang.welcome,
       subtitle: lang.ubuntuWslGuiApps,
       text: lang.ubuntuWslGuiAppsText,
     ),
     Slide(
-      image: SvgPicture.asset('assets/5-Ubuntu WSL for DevOps.svg'),
+      image: SvgPicture.asset('assets/5-Ubuntu_WSL_for_DevOps.svg'),
       title: lang.welcome,
       subtitle: lang.ubuntuWslDevOps,
       text: lang.ubuntuWslDevOpsText,
     ),
     Slide(
-      image: SvgPicture.asset('assets/6-Ubuntu WSL for Enterprises.svg'),
+      image: SvgPicture.asset('assets/6-Ubuntu_WSL_for_Enterprises.svg'),
       title: lang.welcome,
       subtitle: lang.ubuntuWslEnterprises,
       text: lang.ubuntuWslEnterprisesText,
     ),
     Slide.withRichText(
-      image: SvgPicture.asset('assets/7-Ubuntu Logo TAG.svg'),
+      image: SvgPicture.asset('assets/7-Ubuntu_Logo_TAG.svg'),
       title: lang.welcome,
       subtitle: lang.findOutMore,
       span: [

@@ -18,7 +18,7 @@
     "leave" : "Leave",
     "cancel" : "Cancel",
     "ubuntuOnWsl": "Ubuntu on WSL",
-    "ubuntuOnWslText": "WSL delivers the full Ubuntu terminal environment to develop cross-platform applications and manage IT infrastructure without leaving Windows.",
+    "ubuntuOnWslText": "A full Ubuntu environment, deeply integrated with Windows, for Linux application development and execution. Optimised for cloud, web, data science, IOT and fun!",
     "ubuntuWslWebDev": "Ubuntu WSL for\nWeb Development",
     "ubuntuWslWebDevText": "Develop in WSL using native Windows IDEs including VS Code and IntelliJ and benefit\nfrom full NodeJS and Ruby support.",
     "ubuntuWslDataScience":"Ubuntu WSL for Data Science",

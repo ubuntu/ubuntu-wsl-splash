@@ -62,7 +62,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ubuntuOnWsl => 'Ubuntu on WSL';
 
   @override
-  String get ubuntuOnWslText => 'WSL delivers the full Ubuntu terminal environment to develop cross-platform applications and manage IT infrastructure without leaving Windows.';
+  String get ubuntuOnWslText => 'A full Ubuntu environment, deeply integrated with Windows, for Linux application development and execution. Optimised for cloud, web, data science, IOT and fun!';
 
   @override
   String get ubuntuWslWebDev => 'Ubuntu WSL for\nWeb Development';

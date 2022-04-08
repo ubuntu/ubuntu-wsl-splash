@@ -203,7 +203,7 @@ abstract class AppLocalizations {
   /// No description provided for @ubuntuOnWslText.
   ///
   /// In en, this message translates to:
-  /// **'WSL delivers the full Ubuntu terminal environment to develop cross-platform applications and manage IT infrastructure without leaving Windows.'**
+  /// **'A full Ubuntu environment, deeply integrated with Windows, for Linux application development and execution. Optimised for cloud, web, data science, IOT and fun!'**
   String get ubuntuOnWslText;
 
   /// No description provided for @ubuntuWslWebDev.

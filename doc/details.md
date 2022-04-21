@@ -18,13 +18,26 @@ One can easily inspect the workflow [looking here](../.github/workflows/flutter-
 
 > Beware of those steps before pushing code to this repository to avoid red emails from GitHub actions. :smile:
 
-
+---
 
 ## Not sure what to do to start contributing to this project?
 
 
-Consider translating the `arb` files contained in [lib/l10n](../lib/l10n/). Those are plain text files encoded in JSON, so its very easy to work with. Let's say you want to make translations to Czech. The locale code is `cs`, thus you can copy the `app_en.arb` file into `app_cs.arb` and translate the texts at right of the `:`. Keep the symbols at left as they are. Please compare the original `app_en.arb` to one of the existing translations (`app_pt.arb` for instance) for further reference.
+### Consider translating some texts
+
+> As with anything else in life, this will require some very basic git skills.
+
+Consider translating the `arb` files contained in [lib/l10n](../lib/l10n/). Those are plain text files encoded in JSON, so its very easy to work with. Let's say you want to make translations to Czech. The locale code is `cs`, thus you can copy the `app_en.arb` file into `app_cs.arb` and translate the texts at right of the `:`. Keep the symbols at left as they are. Please compare the original `app_en.arb` to one of the existing translations (`app_pt.arb` for instance) for further reference. When doing translations have your focus on the `arb` files. Dart files are automatically generated, so when you're done:
+
+1. Commit your changes
+1. Run the flutter app to regenerate the Dart localization files
+1. Commit the generated files.
+1. Open a pull request on GitHub.
+
+### Report bugs
 
 Issues and bug reports are also welcome. Just make sure to understand the project characteristcs mentioned above before misinterpreting an expected behavior with a bug.
+
+### Flutter code
 
 If you're a skilled Flutter developer you can contribute with test code, or even improve the design and performance of the application.

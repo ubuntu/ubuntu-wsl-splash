@@ -7,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_pt.dart';
 
 /// Callers can lookup localized strings with an instance of AppLocalizations returned
 /// by `AppLocalizations.of(context)`.
@@ -89,7 +90,9 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('en')
+    Locale('en'),
+    Locale('pt'),
+    Locale('pt', 'BR')
   ];
 
   /// No description provided for @appTitle.
@@ -300,7 +303,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'pt'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -308,10 +311,20 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
 
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'pt': {
+  switch (locale.countryCode) {
+    case 'BR': return AppLocalizationsPtBr();
+   }
+  break;
+   }
+  }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en': return AppLocalizationsEn();
+    case 'pt': return AppLocalizationsPt();
   }
 
   throw FlutterError(

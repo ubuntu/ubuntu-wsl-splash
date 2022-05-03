@@ -68,6 +68,7 @@ class _AppHomeState extends State<AppHome> {
   Future<bool?> _showCustomExitDialog() {
     return showDialog<bool>(
         context: context,
+        barrierDismissible: false,
         builder: (context) {
           final lang = AppLocalizations.of(context);
           return AlertDialog(

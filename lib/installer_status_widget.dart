@@ -46,6 +46,7 @@ class InstallerStatus extends StatelessWidget {
         controlAffinity: ListTileControlAffinity.trailing,
         childrenPadding: const EdgeInsets.only(left: 3 * kSpanElementSize),
         expandedAlignment: Alignment.topLeft,
+        maintainState: true,
         children: [
           LogView(
             log: log,
@@ -65,7 +66,6 @@ class InstallerStatus extends StatelessWidget {
             background: BoxDecoration(color: Theme.of(context).shadowColor),
           ),
         ],
-        maintainState: true,
       ),
     );
   }

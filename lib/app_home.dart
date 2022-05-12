@@ -130,18 +130,18 @@ class _AppHomeState extends State<AppHome> {
       case null:
       case InstallerState.initializing:
         statusIcon = const SizedBox(
-          child: CircularProgressIndicator(),
           height: kSpanElementSize,
           width: kSpanElementSize,
+          child: CircularProgressIndicator(),
         );
         title = Text(lang.initializing);
         break;
 
       case InstallerState.unpacking:
         statusIcon = const SizedBox(
-          child: CircularProgressIndicator(),
           height: kSpanElementSize,
           width: kSpanElementSize,
+          child: CircularProgressIndicator(),
         );
 
         title = Text(lang.unpacking);
@@ -156,9 +156,9 @@ class _AppHomeState extends State<AppHome> {
 
       case InstallerState.running:
         statusIcon = const SizedBox(
-          child: CircularProgressIndicator(),
           height: kSpanElementSize,
           width: kSpanElementSize,
+          child: CircularProgressIndicator(),
         );
         title = Text(lang.launching);
         break;

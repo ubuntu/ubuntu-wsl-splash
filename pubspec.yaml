@@ -27,6 +27,7 @@ environment:
   sdk: ">=2.15.0 <3.0.0"
 
 dependencies:
+  ffi: ^1.1.0
   flutter:
     sdk: flutter
   flutter_localizations:
@@ -37,13 +38,13 @@ dependencies:
     git:
       url: https://github.com/canonical/ubuntu-flutter-plugins.git
       path: packages/ubuntu_widgets
-  url_launcher: ^6.0.20
-  win32: ^2.3.0
-  yaru: ^0.2.0
-  yaru_icons: ^0.1.2
+  url_launcher: ^6.1.0
+  win32: ^2.5.0
+  yaru: ^0.3.0
+  yaru_icons: ^0.2.0
 
 dev_dependencies:
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
   test: ^1.17.12

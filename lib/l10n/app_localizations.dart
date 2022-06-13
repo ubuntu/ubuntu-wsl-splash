@@ -10,6 +10,7 @@ import 'app_localizations_ca.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_pt.dart';
+import 'app_localizations_ro.dart';
 
 /// Callers can lookup localized strings with an instance of AppLocalizations returned
 /// by `AppLocalizations.of(context)`.
@@ -96,7 +97,8 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('pt'),
-    Locale('pt', 'BR')
+    Locale('pt', 'BR'),
+    Locale('ro')
   ];
 
   /// No description provided for @appTitle.
@@ -307,7 +309,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ca', 'en', 'es', 'pt'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ca', 'en', 'es', 'pt', 'ro'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -331,6 +333,7 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
     case 'en': return AppLocalizationsEn();
     case 'es': return AppLocalizationsEs();
     case 'pt': return AppLocalizationsPt();
+    case 'ro': return AppLocalizationsRo();
   }
 
   throw FlutterError(

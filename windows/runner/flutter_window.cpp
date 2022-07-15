@@ -55,7 +55,7 @@ bool FlutterWindow::OnCreate() {
           result->Success(flutter::EncodableValue(nullptr));
         }
         else if (call.method_name().compare("destroyWindow") == 0) {
-          DestroyWindow(handle);
+          PostMessage(handle, WM_DESTROY, 0, 0);
           result->Success(flutter::EncodableValue(nullptr));
         }
         else if (call.method_name().compare("quitWindow") == 0) {

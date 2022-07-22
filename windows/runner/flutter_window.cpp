@@ -5,6 +5,10 @@
 #include "flutter/standard_method_codec.h"
 #include "flutter/generated_plugin_registrant.h"
 
+// A custom message used to notify the WndProc to destroy the window.
+// See https://devblogs.microsoft.com/oldnewthing/20110926-00/?p=9553
+constexpr auto WM_CUSTOM_CLOSE = WM_USER+8;
+
 FlutterWindow::FlutterWindow(const flutter::DartProject& project)
     : project_(project) {}
 
@@ -55,7 +59,7 @@ bool FlutterWindow::OnCreate() {
           result->Success(flutter::EncodableValue(nullptr));
         }
         else if (call.method_name().compare("destroyWindow") == 0) {
-          PostMessage(handle, WM_DESTROY, 0, 0);
+          PostMessage(handle, WM_CUSTOM_CLOSE, 0, 0);
           result->Success(flutter::EncodableValue(nullptr));
         }
         else if (call.method_name().compare("quitWindow") == 0) {
@@ -105,7 +109,7 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
         windowCloseChannel->InvokeMethod("onCustomHideEvent", nullptr);
         return 0;
 
-    case WM_USER+8:
+    case WM_CUSTOM_CLOSE:
         DestroyWindow(hwnd);
         return 0;
   }

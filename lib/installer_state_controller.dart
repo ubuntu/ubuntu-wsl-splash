@@ -50,7 +50,7 @@ class InstallerStateController {
   final Map<RegExp, InstallerState> _patternsToStates = {
     RegExp("Installing, this may take a few minutes.*"):
         InstallerState.unpacking,
-    RegExp(".*Error:.*"): InstallerState.error,
+    RegExp("^Error:.*"): InstallerState.error,
     RegExp("^Installation successful!\$"): InstallerState.settingUp,
     RegExp("^Unpacking is complete!\$"): InstallerState.settingUp,
     RegExp("Launching .*"): InstallerState.running,

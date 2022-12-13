@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.15)
+# Allows setting the MSVC_RUNTIME_LIBRARY option
+cmake_policy(SET CMP0091 NEW)
 project(runner LANGUAGES CXX)
 
 add_executable(${BINARY_NAME} WIN32
